@@ -3,11 +3,6 @@ import React from "react";
 import CategoryCard from "./CategoryCard";
 
 const Categories = () => {
-    const CATEGORY_DATA = {
-        id: "1",
-        title: "Pizza",
-        imgUrl: "https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/47c289a9f4/pizza-wide.jpg",
-    };
     return (
         <ScrollView
             horizontal
@@ -17,15 +12,48 @@ const Categories = () => {
                 paddingTop: 10,
             }}
         >
-            {Array(8)
-                .fill(CATEGORY_DATA)
-                .map((_, index) => (
-                    <CategoryCard
-                        key={index}
-                        title={_.title}
-                        imgUrl={_.imgUrl}
-                    />
-                ))}
+            <CategoryCard
+                title={"Pizza"}
+                imgUrl={
+                    "https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/47c289a9f4/pizza-wide.jpg"
+                }
+            />
+            <CategoryCard
+                title={"Pizza"}
+                imgUrl={
+                    "https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/47c289a9f4/pizza-wide.jpg"
+                }
+            />
+            <CategoryCard
+                title={"Pizza"}
+                imgUrl={
+                    "https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/47c289a9f4/pizza-wide.jpg"
+                }
+            />
+            <CategoryCard
+                title={"Pizza"}
+                imgUrl={
+                    "https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/47c289a9f4/pizza-wide.jpg"
+                }
+            />
+            <CategoryCard
+                title={"Pizza"}
+                imgUrl={
+                    "https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/47c289a9f4/pizza-wide.jpg"
+                }
+            />
+            <CategoryCard
+                title={"Pizza"}
+                imgUrl={
+                    "https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/47c289a9f4/pizza-wide.jpg"
+                }
+            />
+            <CategoryCard
+                title={"Pizza"}
+                imgUrl={
+                    "https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/47c289a9f4/pizza-wide.jpg"
+                }
+            />
         </ScrollView>
     );
 };
