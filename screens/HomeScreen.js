@@ -66,7 +66,7 @@ export default function HomeScreen() {
                 {/* Featured Rows */}
             </ScrollView>
 
-            <StatusBar style="auto" />
+            <StatusBar style="light" />
         </SafeAreaView>
     );
 }
