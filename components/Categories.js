@@ -12,48 +12,17 @@ const Categories = () => {
                 paddingTop: 10,
             }}
         >
-            <CategoryCard
-                title={"Pizza"}
-                imgUrl={
-                    "https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/47c289a9f4/pizza-wide.jpg"
-                }
-            />
-            <CategoryCard
-                title={"Pizza"}
-                imgUrl={
-                    "https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/47c289a9f4/pizza-wide.jpg"
-                }
-            />
-            <CategoryCard
-                title={"Pizza"}
-                imgUrl={
-                    "https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/47c289a9f4/pizza-wide.jpg"
-                }
-            />
-            <CategoryCard
-                title={"Pizza"}
-                imgUrl={
-                    "https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/47c289a9f4/pizza-wide.jpg"
-                }
-            />
-            <CategoryCard
-                title={"Pizza"}
-                imgUrl={
-                    "https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/47c289a9f4/pizza-wide.jpg"
-                }
-            />
-            <CategoryCard
-                title={"Pizza"}
-                imgUrl={
-                    "https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/47c289a9f4/pizza-wide.jpg"
-                }
-            />
-            <CategoryCard
-                title={"Pizza"}
-                imgUrl={
-                    "https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/47c289a9f4/pizza-wide.jpg"
-                }
-            />
+            {Array(10)
+                .fill(0)
+                .map((_, i) => (
+                    <CategoryCard
+                        key={i}
+                        title={"Pizza"}
+                        imgUrl={
+                            "https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/47c289a9f4/pizza-wide.jpg"
+                        }
+                    />
+                ))}
         </ScrollView>
     );
 };
