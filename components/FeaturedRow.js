@@ -1,9 +1,10 @@
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, ImageComponent } from "react-native";
 import React from "react";
 import * as Icons from "react-native-heroicons/outline";
+
 import RestaurantCard from "./RestaurantCard";
 
-const FeaturedRow = ({ id, title, description }) => {
+const FeaturedRow = ({ id, title, description, restaurants }) => {
     return (
         <View>
             <View className="flex-row justify-between items-center px-4 mt-4">
@@ -19,23 +20,35 @@ const FeaturedRow = ({ id, title, description }) => {
                 showsHorizontalScrollIndicator={false}
             >
                 {/* Restaurant Cards... */}
-                {Array(10)
-                    .fill(0)
-                    .map((_, i) => (
-                        <RestaurantCard
-                            key={i}
-                            id={"1"}
-                            title={"Yo! Sushi"}
-                            imgUrl={"https://links.papareact.com/gn7"}
-                            rating={"4.5"}
-                            genre={"Japanese"}
-                            address={"1-3-5, Ginza, Chuo-ku, Tokyo"}
-                            short_description={"Sushi, Japanese, Asian"}
-                            dishes={["Sushi", "Sashimi", "Tempura", "Ramen"]}
-                            long={"139.763"}
-                            lat={"35.671"}
-                        />
-                    ))}
+                {restaurants &&
+                    restaurants.map(
+                        ({
+                            _id,
+                            name,
+                            image,
+                            rating,
+                            type,
+                            address,
+                            short_description,
+                            dishes,
+                            lat,
+                            long,
+                        }) => (
+                            <RestaurantCard
+                                key={_id}
+                                id={_id}
+                                title={name}
+                                imgUrl={image}
+                                rating={rating}
+                                genre={type?.name}
+                                address={address}
+                                short_description={short_description}
+                                dishes={dishes}
+                                long={long}
+                                lat={lat}
+                            />
+                        )
+                    )}
             </ScrollView>
         </View>
     );

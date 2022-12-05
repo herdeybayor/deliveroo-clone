@@ -19,24 +19,29 @@ export default function HomeScreen() {
     const [featuredCategories, setFeaturedCategories] = React.useState([]);
 
     React.useEffect(() => {
-        sanityClient
-            .fetch(
-                `
-        *[_type == "featured"] {
-  ...,
-  restaurant[]->{
-    ...,
-    dishes[]->,
-     type-> {
-     name
-     },
-  },
-}
-        `
-            )
-            .then((data) => {
+        const getFeaturedCategories = async () => {
+            try {
+                const data = await sanityClient.fetch(
+                    `
+                *[_type == "featured"] {
+                ...,
+                restaurant[]->{
+                    ...,
+                    dishes[]->,
+                    type-> {
+                    name
+                    },
+                } | order(rating desc),
+                }
+            `
+                );
                 setFeaturedCategories(data);
-            });
+            } catch (error) {
+                console.error(error);
+                console.log("Error fetching featured categories");
+            }
+        };
+        getFeaturedCategories();
     }, []);
 
     React.useLayoutEffect(() => {
@@ -88,10 +93,11 @@ export default function HomeScreen() {
                 <Categories />
 
                 {/* Featured */}
-                {featuredCategories.map((category) => (
+                {featuredCategories?.map((category) => (
                     <FeaturedRow
                         key={category._id}
-                        title={category.title}
+                        title={category.name}
+                        description={category.short_description}
                         restaurants={category.restaurant}
                     />
                 ))}

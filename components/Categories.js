@@ -1,8 +1,27 @@
 import { View, Text, ScrollView } from "react-native";
 import React from "react";
+
 import CategoryCard from "./CategoryCard";
+import sanityClient from "../sanity";
 
 const Categories = () => {
+    const [categories, setCategories] = React.useState([]);
+
+    React.useEffect(() => {
+        const getCategories = async () => {
+            try {
+                const data = await sanityClient.fetch(
+                    `*[_type == "category"] | order(name asc)`
+                );
+                setCategories(data);
+            } catch (error) {
+                console.error(error);
+                console.log("Error fetching categories");
+            }
+        };
+        getCategories();
+    }, []);
+
     return (
         <ScrollView
             horizontal
@@ -12,17 +31,9 @@ const Categories = () => {
                 paddingTop: 10,
             }}
         >
-            {Array(10)
-                .fill(0)
-                .map((_, i) => (
-                    <CategoryCard
-                        key={i}
-                        title={"Pizza"}
-                        imgUrl={
-                            "https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/47c289a9f4/pizza-wide.jpg"
-                        }
-                    />
-                ))}
+            {categories?.map(({ _id, name, image }) => (
+                <CategoryCard key={_id} title={name} imgUrl={image} />
+            ))}
         </ScrollView>
     );
 };
