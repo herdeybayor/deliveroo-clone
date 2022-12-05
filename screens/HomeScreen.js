@@ -80,7 +80,7 @@ export default function HomeScreen() {
                 {/* Offers near you */}
                 <FeaturedRow
                     id="3"
-                    title="Offers near your"
+                    title="Offers near you"
                     description="Why not support your local restaurant tonight!"
                 />
             </ScrollView>
