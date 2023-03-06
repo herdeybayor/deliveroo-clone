@@ -1,15 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import {
-    Image,
-    SafeAreaView,
-    ScrollView,
-    StatusBar,
-    Text,
-    TextInput,
-    View,
-} from "react-native";
+import { Image, ScrollView, Text, TextInput, View } from "react-native";
 import * as Icons from "react-native-heroicons/outline";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import { Categories, FeaturedRow } from "../components";
 import sanityClient from "../sanity";
@@ -102,8 +95,6 @@ export default function HomeScreen() {
                     />
                 ))}
             </ScrollView>
-
-            <StatusBar style="light" />
         </SafeAreaView>
     );
 }
